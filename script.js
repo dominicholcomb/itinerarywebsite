@@ -58,6 +58,21 @@ if (COUNTDOWN_TARGET - new Date() <= 0) {
   countdownInterval = setInterval(tickCountdown, 1000);
 }
 
+// EDIT ME: keep this in sync with UNLOCK_PASSWORD in itinerary/script.js if you change it there.
+const SKIP_PASSWORD = '7771';
+
+const skipCountdownBtn = document.getElementById('skipCountdownBtn');
+skipCountdownBtn.addEventListener('click', () => {
+  const entered = window.prompt('Enter password to skip the countdown:');
+  if (entered === null) return;
+  if (entered === SKIP_PASSWORD) {
+    clearInterval(countdownInterval);
+    revealCard();
+  } else {
+    window.alert('Incorrect password.');
+  }
+});
+
 function fitCardBackText() {
   const maxSize = window.innerWidth >= 700 ? 1.7 : 1.15;
   const minSize = 0.75;
