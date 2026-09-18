@@ -1,0 +1,280 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding: calc(env(safe-area-inset-top, 16px) + 32px) 16px env(safe-area-inset-bottom, 16px);
+  font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
+}
+
+#bgLayer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -2;
+}
+
+#bgPhotoBlur {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(35px) brightness(0.9);
+  transform: scale(1.15);
+}
+
+#bgPhoto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#bgOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(1.5px);
+  z-index: -1;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: center;
+  color: #222;
+  text-shadow:
+    0 0 14px rgba(255, 255, 255, 0.95),
+    0 0 6px rgba(255, 255, 255, 0.95),
+    0 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+#countdownScene,
+#cardArea {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+#countdownScene[hidden],
+#cardArea[hidden] {
+  display: none;
+}
+
+.countdown-label {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.95),
+    0 0 4px rgba(255, 255, 255, 0.95);
+}
+
+#countdownTimer {
+  display: flex;
+  gap: 14px;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 14px;
+  padding: 14px 12px;
+  min-width: 64px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.countdown-unit span {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-unit label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#cardScene {
+  width: 55%;
+  max-width: 420px;
+  aspect-ratio: 4 / 3;
+  perspective: 1200px;
+  opacity: 0;
+  animation: cardIntro 1.1s ease-out forwards;
+  transition: height 0.8s ease;
+}
+
+#cardFlip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: -webkit-transform 0.8s ease;
+  transition: transform 0.8s ease;
+}
+
+#cardFlip.idle-tilt {
+  animation: cardTilt 3.6s ease-in-out infinite;
+}
+
+#cardFlip.flipped {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-front img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card-back {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  width: min(85vw, 480px);
+  -webkit-transform: translate(-50%, -50%) rotateY(180deg);
+  transform: translate(-50%, -50%) rotateY(180deg);
+  background: #fff;
+  border: 2px solid #ccc;
+  border-radius: 24px;
+  padding: 20px;
+  max-height: 62vh;
+  overflow: hidden;
+}
+
+.card-back p {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.55;
+  color: #333;
+  text-align: center;
+}
+
+@keyframes cardIntro {
+  0% {
+    opacity: 0;
+    transform: rotate(-6deg) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes cardTilt {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+#flipBtn {
+  font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 10px 28px;
+  border: 1px solid #999;
+  border-radius: 8px;
+  background: #fafafa;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+#flipBtn.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 700px) {
+  h1 {
+    font-size: 3.2rem;
+    max-width: 700px;
+  }
+
+  #cardScene {
+    max-width: 560px;
+  }
+
+  .card-back {
+    width: min(70vw, 640px);
+  }
+
+  .card-back p {
+    line-height: 1.6;
+  }
+
+  #flipBtn {
+    font-size: 21px;
+    padding: 13px 34px;
+  }
+
+  .countdown-label {
+    font-size: 1.4rem;
+  }
+
+  .countdown-unit {
+    min-width: 90px;
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .countdown-unit span {
+    font-size: 3rem;
+  }
+
+  .countdown-unit label {
+    font-size: 0.85rem;
+  }
+}

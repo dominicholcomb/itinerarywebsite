@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naia + Dominic, 3 Months Website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="bgLayer">
+    <img id="bgPhotoBlur" src="../assets/us-photo-1.jpg" alt="">
+    <img id="bgPhoto" src="../assets/us-photo-1.jpg" alt="">
+  </div>
+  <div id="bgOverlay"></div>
+
+  <h1>Naia + Dominic, 3 Months Website</h1>
+
+  <div id="clipboardScene">
+    <img id="clipboardImg" src="../assets/clipboard-drawing.png" alt="Clipboard">
+    <div id="paperContent">
+      <h2 id="sheetTitle">Date Itinerary</h2>
+      <ul id="activityList"></ul>
+    </div>
+  </div>
+
+  <a id="gardenBtn" class="btn-primary" href="/garden" hidden>Go to the Garden</a>
+
+  <div id="introModal" class="modal-overlay" hidden>
+    <div class="modal">
+      <h3>Activity Locked</h3>
+      <p class="modal-hint">To unlock this activity, you'll first need to win a quick game.</p>
+      <div class="modal-buttons">
+        <button id="introUnderstandBtn" type="button" class="btn-primary">I Understand</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="passwordModal" class="modal-overlay" hidden>
+    <div class="modal">
+      <h3>Enter Password</h3>
+      <p class="modal-hint">Hand the phone to Dominic</p>
+      <div id="passwordDots"></div>
+      <p id="passwordError" class="modal-error" hidden>Incorrect password</p>
+      <div id="keypad">
+        <button type="button" class="keypad-btn" data-digit="1">1</button>
+        <button type="button" class="keypad-btn" data-digit="2">2</button>
+        <button type="button" class="keypad-btn" data-digit="3">3</button>
+        <button type="button" class="keypad-btn" data-digit="4">4</button>
+        <button type="button" class="keypad-btn" data-digit="5">5</button>
+        <button type="button" class="keypad-btn" data-digit="6">6</button>
+        <button type="button" class="keypad-btn" data-digit="7">7</button>
+        <button type="button" class="keypad-btn" data-digit="8">8</button>
+        <button type="button" class="keypad-btn" data-digit="9">9</button>
+        <button type="button" class="keypad-btn keypad-action" id="keypadClear">Clear</button>
+        <button type="button" class="keypad-btn" data-digit="0">0</button>
+        <button type="button" class="keypad-btn keypad-action" id="keypadBackspace">⌫</button>
+      </div>
+      <div class="modal-buttons">
+        <button id="passwordCancelBtn" type="button" class="btn-secondary">Cancel</button>
+        <button id="passwordSubmitBtn" type="button" class="btn-primary">Unlock</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- World map outline: Simple World Map by Al MacDonald, edited by Fritz Lekschas, CC BY-SA 3.0 -->
+  <div id="gameModal" class="modal-overlay" hidden>
+    <div class="modal">
+      <h3>Name New Countries!</h3>
+      <div id="worldMapContainer" role="img" aria-label="World map"></div>
+      <p class="modal-hint" id="gameRoundProgress">0 / 5 new countries</p>
+      <input type="text" id="countryInput" autocomplete="off" autocapitalize="words">
+      <p id="gameFeedback" class="modal-feedback" hidden></p>
+
+      <button id="gameContinueBtn" type="button" class="btn-primary" hidden>Continue</button>
+      <button id="gameCancelBtn" type="button" class="btn-secondary">Close</button>
+
+      <p class="modal-total" id="gameTotalFound">0 / 195 countries found so far</p>
+      <ul id="foundCountriesList"></ul>
+    </div>
+  </div>
+
+  <div id="celebrationModal" class="modal-overlay" hidden>
+    <div id="confettiLayer"></div>
+    <div class="modal">
+      <p class="modal-success">You just unlocked:</p>
+      <p class="modal-success-activity" id="celebrationActivityLabel"></p>
+      <button id="celebrationContinueBtn" type="button" class="btn-primary">Continue</button>
+    </div>
+  </div>
+
+  <script src="countries.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

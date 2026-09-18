@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lock Drawer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toolbar">
+    <label>
+      Color
+      <input type="color" id="colorPicker" value="#111111">
+    </label>
+
+    <label>
+      Brush size
+      <input type="range" id="brushSize" min="1" max="40" value="5">
+      <span id="brushSizeLabel">5</span>
+    </label>
+
+    <button id="eraserBtn" type="button">Eraser</button>
+    <button id="undoBtn" type="button">Undo</button>
+    <button id="clearBtn" type="button">Clear</button>
+    <button id="saveBtn" type="button">Save Drawing</button>
+  </div>
+
+  <div id="canvasWrap">
+    <canvas id="cardCanvas"></canvas>
+  </div>
+
+  <p id="hint">This is a small icon — it'll be reused for every locked activity on the itinerary, so keep it simple. Draw with your mouse or trackpad. When you're happy with it, click "Save Drawing" — that downloads a PNG and a JSON file. Send both files back to me.</p>
+
+  <script src="script.js"></script>
+</body>
+</html>
