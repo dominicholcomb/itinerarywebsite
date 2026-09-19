@@ -118,7 +118,6 @@ let pendingNew = loadPendingNew();
 let passwordVerifiedIndices = loadPasswordVerifiedIndices();
 
 const list = document.getElementById('activityList');
-const gardenBtn = document.getElementById('gardenBtn');
 
 function firstLockedIndex() {
   return activities.findIndex((a) => !a.unlocked);
@@ -160,8 +159,6 @@ function render() {
 
     list.appendChild(li);
   });
-
-  gardenBtn.hidden = !activities.every((a) => a.unlocked);
 }
 
 // --- Intro modal ---
