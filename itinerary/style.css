@@ -67,6 +67,10 @@ h1 {
 }
 
 #refreshBtn {
+  position: fixed;
+  right: calc(env(safe-area-inset-right, 0px) + 16px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,15 +78,15 @@ h1 {
   height: 30px;
   padding: 0;
   border: none;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.55);
+  background: none;
   color: #333;
   cursor: pointer;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
 }
 
 #refreshBtn svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 #refreshBtn.spinning svg {
