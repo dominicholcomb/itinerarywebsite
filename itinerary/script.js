@@ -1,6 +1,13 @@
 // EDIT ME: change this to whatever numeric password you want to type in to unlock each game (digits only).
 const UNLOCK_PASSWORD = '7771';
 
+const refreshBtn = document.getElementById('refreshBtn');
+refreshBtn.addEventListener('click', () => {
+  refreshBtn.classList.add('spinning');
+  // Cache-bust the page itself too, not just the scripts it loads.
+  window.location.href = window.location.pathname + '?v=' + Date.now();
+});
+
 const NEW_COUNTRIES_NEEDED = 5;
 
 const STORAGE_KEYS = {
