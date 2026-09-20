@@ -14,10 +14,10 @@ const STORAGE_KEYS = {
 const activities = [
   { label: '9:00am: Surprise item', unlocked: false, barWidth: '75%' },
   { label: '9:00am: Foot + full body massage', unlocked: false, barWidth: '85%' },
-  { label: '9:30am: Cuddle break', unlocked: false, barWidth: '55%' },
+  { label: '9:30am: Homework break', unlocked: false, barWidth: '58%' },
   { label: "10:30am: Breakfast at Beth's Cafe", unlocked: false, barWidth: '85%' },
-  { label: '12:00pm: Pedicure', unlocked: false, barWidth: '50%' },
-  { label: '1:00pm: Fashion show shopping', unlocked: false, barWidth: '88%' },
+  { label: '12:30pm: Flag football', unlocked: false, barWidth: '58%' },
+  { label: '2:00pm: Pedicure', unlocked: false, barWidth: '46%' },
   { label: '4:15pm: Dinner', unlocked: false, barWidth: '42%' },
   { label: '5:30pm: Cuddle break', unlocked: false, barWidth: '55%' },
   { label: '6:30pm: Bubble bath', unlocked: false, barWidth: '52%' },
